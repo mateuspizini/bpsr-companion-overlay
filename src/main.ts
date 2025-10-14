@@ -3,6 +3,10 @@ import path from 'node:path';
 import fs from 'node:fs';
 import Store from 'electron-store';
 
+import { fileURLToPath } from 'node:url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 let win: BrowserWindow;
 const store = new Store<{ theme: 'dark'|'light'; locale: string; clickThrough: boolean }>();
 if (!store.has('theme')) store.set('theme', 'dark');
@@ -17,16 +21,20 @@ function createWindow() {
     transparent: true,
     alwaysOnTop: true,
     resizable: true,
-    webPreferences: { preload: path.join(__dirname, 'preload.js'), contextIsolation: true }
+    webPreferences: { 
+      preload: path.join(__dirname, 'preload.js'), 
+      contextIsolation: true 
+    }
   });
   win.setAlwaysOnTop(true, 'screen-saver');
   win.setVisibleOnAllWorkspaces(true);
   applyClickThrough(store.get('clickThrough'));
 
-  if (process.env.VITE_DEV_SERVER_URL)
+  if (process.env.VITE_DEV_SERVER_URL) {
     win.loadURL(process.env.VITE_DEV_SERVER_URL);
-  else
+  } else {
     win.loadFile(path.join(__dirname, 'renderer', 'index.html'));
+  }
 }
 
 function applyClickThrough(on: boolean) {
