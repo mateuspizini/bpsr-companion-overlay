@@ -3,12 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+
+  // 👇 ADICIONE ISTO
+  "main": "dist/main.js",
+
   "scripts": {
     "dev": "vite",
-    "build": "vite build && electron-builder --win",
+    // 👇 ALTERE O build para compilar o main/preload antes
+    "build": "npm run build:main && vite build && electron-builder --win",
+    // 👇 ADICIONE ESTE script
+    "build:main": "tsc -p tsconfig.main.json",
     "electron": "vite build && electron .",
     "start": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\""
   },
+
   "devDependencies": {
     "@types/node": "^22.5.0",
     "concurrently": "^9.0.0",
@@ -22,17 +30,17 @@
     "electron-log": "^5.1.2",
     "electron-store": "^9.0.0"
   },
+
   "build": {
     "appId": "com.pizini.bpsr.comp.overlay",
     "productName": "BPSR Companion Overlay",
     "win": {
-      "target": [
-        "nsis"
-      ],
+      "target": ["nsis"],
       "requestedExecutionLevel": "requireAdministrator"
     },
-    "directories": {
-      "buildResources": "build"
-    }
+    "directories": { "buildResources": "build" },
+
+    // 👇 GARANTE QUE A PASTA DIST ENTRE NO PACOTE
+    "files": ["dist/**"]
   }
 }
