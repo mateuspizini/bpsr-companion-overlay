@@ -1,0 +1,11 @@
+:root { --bg: rgba(10,10,10,.76); --fg: #eee; --muted:#9aa; }
+body { margin:0; font: 12px/1.3 ui-sans-serif, system-ui; color: var(--fg); background: transparent; }
+.overlay { background: var(--bg); border-radius: 12px; backdrop-filter: blur(8px); padding: 8px 10px; }
+.row { display:flex; align-items:center; gap:10px; margin: 4px 0; }
+.head .title{ font-weight:700; letter-spacing:.3px }
+.actions button{ background:#222; color:#eee; border:1px solid #444; border-radius:8px; padding:4px 8px; cursor:pointer }
+.block{ background:#151515; padding:6px 10px; border-radius:8px; display:flex; flex-direction:column; min-width:110px }
+.block b{ font-family:Consolas, ui-monospace; font-size:14px }
+.table{ display:grid; grid-template-columns: 1fr 60px 60px; gap:6px; width:100% }
+.table .hdr{ color:var(--muted); font-weight:600 }
+.compact .row{ gap:8px }

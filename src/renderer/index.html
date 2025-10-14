@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BPSR Companion Overlay</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body class="theme-dark">
+  <div id="app" class="overlay compact">
+    <div class="row head">
+      <span class="title">BPSR — Medidor (DPS/HPS)</span>
+      <div class="actions">
+        <button id="btnStart">Iniciar</button>
+        <button id="btnReset">Resetar</button>
+        <button id="btnExportCSV">CSV</button>
+        <button id="btnExportJSON">JSON</button>
+        <button id="btnClick">Passar cliques</button>
+      </div>
+    </div>
+    <div class="row stats">
+      <div class="block"><span>Pessoal DPS</span><b id="meDps">0</b></div>
+      <div class="block"><span>Pessoal HPS</span><b id="meHps">0</b></div>
+      <div class="block"><span>Grupo DPS</span><b id="grpDps">0</b></div>
+      <div class="block"><span>Grupo HPS</span><b id="grpHps">0</b></div>
+      <div class="block"><span>5s DPS</span><b id="rdps">0</b></div>
+      <div class="block"><span>5s HPS</span><b id="rhps">0</b></div>
+    </div>
+    <div class="row filters">
+      <label><input type="checkbox" id="onlyParty" checked> Apenas Grupo</label>
+      <input id="bossName" placeholder="Marcar Boss (nome)" />
+      <button id="btnBoss">Marcar</button>
+      <button id="btnBossClear">Limpar</button>
+    </div>
+    <div class="row table" id="topTable"></div>
+  </div>
+  <script type="module" src="/index.ts"></script>
+</body>
+</html>

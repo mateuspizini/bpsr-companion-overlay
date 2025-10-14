@@ -1,0 +1,38 @@
+{
+  "name": "bpsr-companion-overlay",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && electron-builder --win",
+    "electron": "vite build && electron .",
+    "start": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\""
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.0",
+    "concurrently": "^9.0.0",
+    "electron": "^31.3.0",
+    "electron-builder": "^25.0.5",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.0",
+    "wait-on": "^7.2.0"
+  },
+  "dependencies": {
+    "electron-log": "^5.1.2",
+    "electron-store": "^9.0.0"
+  },
+  "build": {
+    "appId": "com.pizini.bpsr.comp.overlay",
+    "productName": "BPSR Companion Overlay",
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "requestedExecutionLevel": "requireAdministrator"
+    },
+    "directories": {
+      "buildResources": "build"
+    }
+  }
+}
