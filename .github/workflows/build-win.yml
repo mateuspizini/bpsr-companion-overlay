@@ -16,15 +16,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: Install deps
-        run: npm ci
+        run: npm install
 
-      - name: Build renderer (Vite)
-        run: npm run dev --workspaces=false
-        shell: bash
-
+      # Build de verdade (vite build + electron-builder)
       - name: Package (NSIS)
         run: npm run build
 
