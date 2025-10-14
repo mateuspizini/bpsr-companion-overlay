@@ -6,7 +6,7 @@
   "main": "dist/main.js",
   "scripts": {
     "dev": "vite",
-    "build": "npm run build:main && vite build && electron-builder --win",
+    "build": "npm run build:main && vite build && electron-builder --win --publish=never",
     "build:main": "tsc -p tsconfig.main.json",
     "electron": "vite build && electron .",
     "start": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\""
